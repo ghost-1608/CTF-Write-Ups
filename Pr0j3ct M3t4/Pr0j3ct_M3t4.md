@@ -12,7 +12,7 @@
 Reading the description, I could conclude the challenge had something to do with the metadata of the file. I planned on trying the usual route `file` followed by using some metadata related tools like `exiftool`.
 
 ## Execution
-I running `file`
+I ran `file`
 ```bash
 $ file chall.jpg
 ```
