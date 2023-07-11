@@ -58,7 +58,7 @@ The reason this piece of information is important is the hint provided. There's 
 
 Running a scan of running processes in the image (saving the output because of the size of the file)
 ```bash
-vol.py -f chall.raw --profile=Win7SP1x86 pslist > pslist.txt
+$ vol.py -f chall.raw --profile=Win7SP1x86 pslist > pslist.txt
 ```
 Out of the processes in the list, two caught my eye.
   
@@ -121,7 +121,7 @@ Finally, I re-opened `cmd.dmp` in hexedit, and searched for the bytes `620069003
 And there she is
 ![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/8bf5c192-dc9b-4bf4-befb-b1515e0c363b)
 
-The only thing left now were to remove the dots from the ASCII text, which I did by running it through a `replace()` in python
+I copied the part containing the flag thorugh the terminal and got rid of the hex bytes. The only thing remaining was to remove the dots from the ASCII text, which I did by running it through a `replace()` in python
 ```python3
 >>> 'b.i.0.s.{m.3.m.0.r.y._.s.u.p.r.e.m.4.c.y.}'.replace('.', '')
 bi0s{m3m0ry_suprem4cy}
