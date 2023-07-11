@@ -79,7 +79,7 @@ The dump was generated inside the folder `out`. So, I went there and the first t
 $ hexedit cmd.dmp
 ```
 
-There wasn't anything sticking out except for one detail, which I didn't realise till slightly after. So since there wasn't anything in particular to attract my attention, I closed hexedit.
+There wasn't anything sticking out except for one detail, which I didn't realise till slightly after. Since there wasn't anything in particular to attract my attention, I closed hexedit.
 Next, I proceeded to check the strings in the file just in case. However, what I did notice running the `strings` command is that not all the strings that I saw in hexedit were visible.
 So I re-opened hexedit to see what the deal was, and realised this:-
   
