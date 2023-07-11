@@ -8,10 +8,10 @@
 > **FLAG FORMAT:** bi0s{...}
 
 ## The Website
-![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/f9c9e84f-63ba-4be0-8333-8e1e31f37610)
+![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/c89d8c25-eb2d-4c3c-876a-de93abb9f8d4)
 The website has a textbox to enter XML in. On pressing submit, it parses the XML to display the output right there.
-
-I entered the following code to try it out
+  
+I wrote the following code to try it out
 ```XML
 <?xml version="1.0"?>
     <change-log>
@@ -20,7 +20,7 @@ I entered the following code to try it out
 ```
   
 On entering the above code and hitting "Submit", we get
-![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/1db85083-9519-449d-aa0d-44fe988761da)
+![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/fe2ae83c-6a2e-4520-93e0-f43fc23bb71f)
 
 ## Initial Takeaway
 The challenge description made the goal very clear, to exploit XML External Entity Attack. The vulnerability this attack uses is parsing of XML code as is by a website.
@@ -41,7 +41,7 @@ In simple words, it does exactly as I had planned earlier. The code gets the out
 So, I entered the code as decided and hit "Submit".
   
 Et voilà
-![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/d5140bbf-57de-4d60-a24e-0930192cc8ea)
+![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/8487192e-7149-4757-b94f-632a1f54cc2a)
 
 **(DISCLAIMER):** One thing to note is that according to the information released by the organisers, some CTF challenges use dynamic flags. Hence, the flag I solved the challenge with and the flag at the time of writing this write-up are different.
 The method however remains the same.
