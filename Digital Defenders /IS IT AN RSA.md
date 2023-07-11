@@ -38,42 +38,108 @@ c = pow(m,e,n3)
 with open("cipher.txt","w") as f1:
     f1.write("n1 : {n1}\nn2 : {n2}\nn3 : {n3}\nc : {c}")
 ```
-
+  
+(Disclaimer: Here onwards I've truncated the value of the actual numbers since they're too big to display here most of the times)
+  
 And, the contents of cipher.txt
 ```
-
+n1 : 209129100507960...
+n2 : 238724269325638...
+n3 : 623265548625163...
+c : 3007656756310367...
 ```
+
+After studying a the code a little and a bit on RSA encryptions, I came to take the assumption that `n3` might be a number greater than the multiple of multiple prime numbers.
+  
+I refered the internet a bit more on how I could solve such a problem and came up with the following steps that I'd approach:-
+* Find the GCD of `n1` and `n2`, call it `x`.
+* Figure out the relation of `n3` with `n1`, `n2` and `x`.
+* And figure out the relation between `phi` and whatever I solved so far
 
 ## Execution
-`chall.txt` had the following details
+At first I found out the GCD of `n1` and `n2`, and found the relation of it with each
+__
+Next, I (after finding the GCD of `a`, `b`, `x` with `n3`), determined that I could write
 ```
-𝑬𝒏𝒔𝒖𝒓𝒆 𝒕𝒉𝒆 𝒄𝒍𝒊𝒆𝒏𝒕'𝒔 𝒔𝒆𝒄𝒖𝒓𝒊𝒕𝒚 𝒂𝒕 𝒂𝒍𝒍 𝒕𝒊𝒎𝒆𝒔
- 
-agin{afkkxf_7e3_ib4d}
-
-𝑴𝒐𝒅𝒆𝒍 : 𝑴3
-𝑹𝒆𝒇𝒍𝒆𝒄𝒕𝒐𝒓 : 𝑼𝑲𝑾 𝑩
-
-𝑹𝑶𝑻𝑶𝑹 1 : 𝑽𝑰
-𝑷𝒐𝒔𝒊𝒕𝒊𝒐𝒏 : 1𝑨
-𝑹𝒊𝒏𝒈 : 2𝑩
-
-𝑹𝑶𝑻𝑶𝑹 2 : 𝑰
-𝑷𝒐𝒔𝒊𝒕𝒊𝒐𝒏 : 3𝑪
-𝑹𝒊𝒏𝒈 : 4𝑫
-
-𝑹𝑶𝑻𝑶𝑹 3 : 𝑰𝑰𝑰
-𝑷𝒐𝒔𝒊𝒕𝒊𝒐𝒏 : 5𝑬
-𝑹𝒊𝒏𝒈 : 6𝑭
-
-𝑷𝑳𝑼𝑮𝑩𝑶𝑨𝑹𝑫 : 𝒃𝒒 𝒄𝒓 𝒅𝒊 𝒆𝒋 𝒌𝒘 𝒎𝒕 𝒐𝒔 𝒑𝒙 𝒖𝒛 𝒈𝒉
+n3 = a * b * x * P
 ```
-So, I headed over to [](https://cryptii.com/pipes/enigma-machine) to solve this challenge.
-
-I entered the values as mentioned
+Or,
+```
+P = n3 // (a * b * x)
+```
   
-![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/2f5b8fdc-3cae-4e24-8c81-218836b722a8)
+Next is to check if either `a`, `b`, or `x` are factors of `P`
+```python3
+print(math.gcd(P, a))
+print(math.gcd(P, b))
+print(math.gcd(P, x))
+```
+```
+12471612875027441617719...
+14236548924427800678189...
+1
+```
 
-And thus got the flag.
+Looking at the output, I realised that `a` and `b` were factors of `P`. Now, I re-wrote `n3` as
+```
+n3 = a^2 * b^2 * x * Q
+Q = n3 // ((a * b * x) * (a * b))
+```
 
-**FLAG:** `flag{wojtek_7h3_be4r}`
+Again verifying if either `a`, `b`, or `x` are factors of `Q`
+```python3
+print(math.gcd(Q, a))
+print(math.gcd(Q, b))
+print(math.gcd(Q, x))
+```
+```
+12471612875027441617719...
+1
+1
+```
+
+Yet again, `a` and `b` were the factors of `Q`. Finally, let `n3` be
+```
+n3 = a^3 * b^2 * x * R
+R = n3 // ((a * b * x) * (a * b) * a)
+```
+
+This time, running the very same GCD code with each `a`, `b`, and `x` all return `1`.
+This means `n3 = ((a * b * x) * (a * b) * a)* d` (Taking `R` as `d`)
+
+Finally, after some amount of coding (and unethically bypassing errors), I found out that all combinations give the same flag. Nevertheless, here's the code
+```python3
+import math
+
+n1 = 2091291005079603183...
+n2 = 2387242693256388391...
+n3 = 6232655486251632785...
+c = 30076567563103670244...
+
+def egd(e, phi):
+    k = 1
+    while (1 + k * phi) % e: k += 1
+    return (1 + k * phi) // e
+
+x = math.gcd(n1, n2)
+a = n1 // x
+b = n2 // x
+d = n3 // ((x * a * b) * (a * b) * a)
+e = 65537
+v = ['(a-1)*(x-1)', '(a-1)*(b-1)', '(a-1)*(d-1)', '(x-1)*(b-1)', '(x-1)*(d-1)', '(b-1)*(d-1)']
+for phi in v:
+    for i in [n1]:
+        try:
+            f = egd(e, eval(phi))
+            pt = hex(pow(c, f, i))[2:]
+            b = bytes.fromhex(pt)
+            asciis = bt.decode("ASCII")
+            print(f'{asciis}')
+        except:
+            pass
+```
+```
+flag{1s_17_r34lly_an_RSA???}
+```
+
+**FLAG:** `flag{1s_17_r34lly_an_RSA???}`
