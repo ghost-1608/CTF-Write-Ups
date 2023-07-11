@@ -16,7 +16,7 @@ I ran `file`
 ```bash
 $ file chall.jpg
 ```
-Gave
+Executing which gave
 ```bash
 chall.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16,
 comment: "Ymkwc3tleDFmX2Q0dDR9Cg==", baseline, precision 8, 1200x900, components 3
