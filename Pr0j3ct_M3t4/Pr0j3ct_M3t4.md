@@ -11,7 +11,11 @@
 Reading the description, I could conclude the challenge had something to do with the metadata of the file. I planned on trying the usual route `file` followed by using some metadata related tools like `exiftool`.
 
 ## Execution
-I used `file` on `chall.jpg`
+I running `file`
+```
+file chall.jpg
+```
+Gave
 ```shell
 chall.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16,
 comment: "Ymkwc3tleDFmX2Q0dDR9Cg==", baseline, precision 8, 1200x900, components 3
@@ -21,7 +25,7 @@ So, I decoded it using the terminal
 ```
 echo Ymkwc3tleDFmX2Q0dDR9Cg== | base64 --decode
 ```
-Thus giving
+Which gave
 ```
 bi0s{ex1f_d4t4}
 ```
