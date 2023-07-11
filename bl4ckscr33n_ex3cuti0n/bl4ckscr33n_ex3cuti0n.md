@@ -118,7 +118,7 @@ Which returned
 
 Finally, I re-opened `cmd.dmp` in hexedit, and searched for the bytes `62006900300073007b`.
 
-And there she is
+And there she was
   
 ![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/8bf5c192-dc9b-4bf4-befb-b1515e0c363b)
 
