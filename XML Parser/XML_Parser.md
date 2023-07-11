@@ -43,7 +43,7 @@ So, I entered the code as decided and hit "Submit".
 Et voilà
 ![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/d5140bbf-57de-4d60-a24e-0930192cc8ea)
 
-**(DISCLAIMER):** One thing to note is that according to the information released by the organisers, some CTF challenges use dynamic flags. Hence, the flag I solved the challenge with, and the flag at the time of writing this write-up are different.
+**(DISCLAIMER):** One thing to note is that according to the information released by the organisers, some CTF challenges use dynamic flags. Hence, the flag I solved the challenge with and the flag at the time of writing this write-up are different.
 The method however remains the same.
 
 **FLAG:** `bi0s{icsTXDzJJDiv6FeaNshGkw==}`
