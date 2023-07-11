@@ -13,7 +13,7 @@ Reading the description, I could conclude the challenge had something to do with
 
 ## Execution
 I running `file`
-```
+```shell
 $ file chall.jpg
 ```
 Gave
@@ -23,11 +23,11 @@ comment: "Ymkwc3tleDFmX2Q0dDR9Cg==", baseline, precision 8, 1200x900, components
 ```
 Right here, I noticed a comment in the file `Ymkwc3tleDFmX2Q0dDR9Cg==`. It obviously stood out to me as a base64 encoded text.
 So, I decoded it using the terminal
-```
+```shell
 $ echo Ymkwc3tleDFmX2Q0dDR9Cg== | base64 --decode
 ```
 Which gave
-```
+```shell
 bi0s{ex1f_d4t4}
 ```
 
