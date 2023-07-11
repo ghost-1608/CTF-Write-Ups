@@ -89,7 +89,7 @@ Certain strings like the one above, weren't continuously laid, so I looked at th
 
 ![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/8b6e338c-e1e4-4dce-89fe-e14c7984dd69)
 
-These strings were layed out in such a manner that there was a null byte after every character. So, grepping any coherant string from the output of the strings command wouldn't yield you anything.
+These strings were layed out in such a manner that there was a null byte after every character. So, grepping any coherant string from the output of the `strings` command wouldn't yield you anything.
 So, I quickly designed a small python script allowing me to convert regular text to bytes with null bytes after every character so that I could search the file.
 ```python3
 #!/usr/bin/python3
@@ -119,6 +119,7 @@ Which returned
 Finally, I re-opened `cmd.dmp` in hexedit, and searched for the bytes `62006900300073007b`.
 
 And there she is
+  
 ![image](https://github.com/ghost-1608/CTF-Write-Ups/assets/64543976/8bf5c192-dc9b-4bf4-befb-b1515e0c363b)
 
 I copied the part containing the flag thorugh the terminal and got rid of the hex bytes. The only thing remaining was to remove the dots from the ASCII text, which I did by running it through a `replace()` in python
