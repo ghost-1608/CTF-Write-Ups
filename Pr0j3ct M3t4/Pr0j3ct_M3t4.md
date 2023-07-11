@@ -1,4 +1,4 @@
-# Pr0j3ct_M3t4 - Digital Defenders CTF
+# Pr0j3ct_M3t4 (Digital Forensics) - Digital Defenders CTF 2023
 
 ## Description
 > In the realm of digital forensics, a captivating case unfolded, where a meticulous examination of metadata became the key to uncovering a concealed crime. As investigators delved into the digital artifacts, their attention was drawn to the hidden secrets nestled within the metadata fields. Timestamps, geolocation coordinates, and authorship details held the potential to unveil the truth. Through methodical analysis, a significant discovery emerged—a series of covert conversations, seemingly innocuous at first glance but containing coded references to illicit activities, is there anything on the image that was shared?
