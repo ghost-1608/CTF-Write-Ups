@@ -5,7 +5,7 @@
 
 > **FLAG FORMAT:** bi0s{...}
 
-## Files
+## File(s)
 1. chall.jpg
 
 ## Initial Takeaway
