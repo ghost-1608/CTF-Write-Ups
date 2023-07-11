@@ -13,7 +13,7 @@
 
 ## Initial Takeaway
 Extracting the contents of the tarball gave one file `chall.raw`. The description gives the information that the provided file is a memory dump.
-Going ahead by this information, I planned on using volatility (Python2). The plan was to run an `imageinfo` first to figure out the profile, then perhaps run a file scan or a process list scan, and then build upon that.
+Going ahead with this information, I planned on using volatility (Python2). The plan was to run an `imageinfo` first to figure out the profile, then perhaps run a file scan or a process list scan, and then build upon that.
 
 ## Execution
 Before proceeding with using volatility though, I decided to run a customary `file` command on the file.
@@ -74,7 +74,7 @@ So, I memdumped the process
 ```bash
 $ vol.py -f chall.raw --profile=Win7SP1x86 memdump -p 980 -D out/
 ```
-The dump was generated inside the folder `out`. So, I went there and the first thing I though might be useful was see the hex view of the file. I renamed the file to `cmd.dmp` for my convinience and opened it in hexedit.
+The dump was generated inside the folder `out`. So, I went there and the first thing I thought might be useful was see the hex view of the file. I renamed the file to `cmd.dmp` for my convinience and opened it in hexedit.
 ```bash
 $ hexedit cmd.dmp
 ```
