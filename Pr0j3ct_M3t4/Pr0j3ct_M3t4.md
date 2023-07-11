@@ -13,21 +13,21 @@ Reading the description, I could conclude the challenge had something to do with
 
 ## Execution
 I running `file`
-```shell
+```bash
 $ file chall.jpg
 ```
 Gave
-```shell
+```bash
 chall.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16,
 comment: "Ymkwc3tleDFmX2Q0dDR9Cg==", baseline, precision 8, 1200x900, components 3
 ```
 Right here, I noticed a comment in the file `Ymkwc3tleDFmX2Q0dDR9Cg==`. It obviously stood out to me as a base64 encoded text.
 So, I decoded it using the terminal
-```shell
+```bash
 $ echo Ymkwc3tleDFmX2Q0dDR9Cg== | base64 --decode
 ```
 Which gave
-```shell
+```bash
 bi0s{ex1f_d4t4}
 ```
 
