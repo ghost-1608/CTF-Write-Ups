@@ -67,20 +67,19 @@ So, I went and made a decrypting script
 ```python3
 from Crypto.Cipher import AES
 
-pnghead = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR'
+pngheader = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR'
 l = []
 
 with open('chall.txt', 'r') as f:
-    block = bytes.fromhex(f.read(32))
-    xored = [x^y for x, y in zip(block, pnghead)]
-    x = bytes(xored)
+    r = bytes.fromhex(f.read(32))
+    x = bytes([x^y for x, y in zip(r, pngheader)])
 
 with open('chall.txt', 'r') as f:
-    block = bytes.fromhex(f.read(32))
-    while block:
-        xored = [x^y for x, y in zip(block, x)]
-        l.append(bytes(xored))
-        block = bytes.fromhex(f.read(32))
+    r = bytes.fromhex(f.read(32))
+    while r:
+        y = [i ^ j for i, j in zip(r, x)]
+        l.append(bytes(y))
+        r = bytes.fromhex(f.read(32))
 
 with open('out.png', 'wb') as f:
     f.write(b''.join(l))
